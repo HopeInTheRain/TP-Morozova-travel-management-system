@@ -9,8 +9,8 @@ namespace TravelManagement
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddControllersWithViews();
 
-            builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
@@ -32,7 +32,15 @@ namespace TravelManagement
 
             app.UseHttpsRedirection();
 
+            app.UseStaticFiles();
+
+            app.UseRouting();
+
             app.UseAuthorization();
+
+            app.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
 
 
             app.MapControllers();

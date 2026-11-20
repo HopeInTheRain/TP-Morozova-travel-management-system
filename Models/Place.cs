@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace TravelManagement.Models
 {
@@ -22,6 +23,7 @@ namespace TravelManagement.Models
         public int CountryId { get; set; }
 
         //связь с объектом страны
-        public Country Country { get; set; } = null;
+        [ValidateNever]
+        public Country Country { get; set; } = null!;
     }
 }
